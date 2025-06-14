@@ -1,0 +1,83 @@
+*, *::before, *::after {
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    margin: 0;
+    background: linear-gradient(to right, #4facfe, #00f2fe);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    overflow: hidden; /* Prevent scrollbar due to subtle movements */
+}
+
+.calculator {
+    display: grid;
+    grid-template-columns: repeat(4, 100px);
+    grid-template-rows: minmax(120px, auto) repeat(5, 80px);
+    background-color: rgba(0, 0, 0, .75);
+    border-radius: 15px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    overflow: hidden; /* Ensure rounded corners for internal elements */
+}
+
+.calculator button {
+    cursor: pointer;
+    font-size: 2rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    outline: none;
+    background-color: rgba(255, 255, 255, .2);
+    color: white;
+    transition: background-color 0.2s ease-in-out, transform 0.1s ease-in-out; /* Transitions for hover and active */
+}
+
+.calculator button:hover {
+    background-color: rgba(255, 255, 255, .3);
+}
+
+.calculator button:active {
+    transform: scale(0.95); /* Slight shrink effect on click */
+}
+
+.calculator button.span-two {
+    grid-column: span 2;
+}
+
+.display {
+    grid-column: 1 / -1; /* Spans all columns */
+    background-color: rgba(0, 0, 0, .85);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding: 15px;
+    word-wrap: break-word; /* Allows long numbers to wrap */
+    word-break: break-all; /* Breaks words if necessary */
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1); /* Separator */
+}
+
+.display .previous-operand {
+    color: rgba(255, 255, 255, .75);
+    font-size: 1.5rem;
+    text-align: right;
+    width: 100%; /* Ensure it takes full width */
+    min-height: 1.5em; /* Reserve space */
+}
+
+.display .current-operand {
+    color: white;
+    font-size: 3rem;
+    text-align: right;
+    width: 100%; /* Ensure it takes full width */
+}
+
+/* Specific styling for operation buttons for visual distinction */
+button[data-operation], button[data-equals] {
+    background-color: rgba(255, 165, 0, 0.6); /* Orange tint for operations */
+}
+
+button[data-operation]:hover, button[data-equals]:hover {
+    background-color: rgba(255, 165, 0, 0.8);
+}
